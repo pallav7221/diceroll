@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        button{
+            font-size: 20px;
+            padding: 5px;
+            margin: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="winner" style="background-color: teal;">
+        <p>Winner <span></span></p>
+    </div>
+    <div id="member_1">
+
+    </div>
+    <div id="member_2">
+
+    </div>
+    <div id="member_3">
+
+    </div>
+    <button onclick="roll()">ROLL THE DICE</button>
+</body>
+
+<script>
+
+    function roll(){
+        var A = Math.ceil((Math.random() * 6));
+        var B = Math.ceil((Math.random() * 6));
+        var C = Math.ceil((Math.random() * 6));
+        
+        document.querySelector("#member_1").innerText = A;
+        document.querySelector("#member_2").innerText = B;
+        document.querySelector("#member_3").innerText = C;
+
+        var max_value = Math.max(A,B,C);
+        var min_value = Math.min(A,B,C);
+
+        document.querySelector("#winner>p>span").innerText = max_value;
+       
+        document.querySelector("#member_1").style.backgroundColor = "white";
+        document.querySelector("#member_2").style.backgroundColor = "white";
+        document.querySelector("#member_3").style.backgroundColor = "white";
+
+        if(A == B && B == C){
+            document.querySelector("#member_1").style.backgroundColor = "blue";
+            document.querySelector("#member_2").style.backgroundColor = "blue";
+            document.querySelector("#member_3").style.backgroundColor = "blue";
+
+        }
+        else if(A==B && A != C){
+            document.querySelector("#member_1").style.backgroundColor = "blue";
+            document.querySelector("#member_2").style.backgroundColor = "blue";
+        }
+        else if(B == C && A != B){
+            document.querySelector("#member_2").style.backgroundColor = "blue";
+            document.querySelector("#member_3").style.backgroundColor = "blue";
+        }
+        else if(A==C && C != B){
+            document.querySelector("#member_1").style.backgroundColor = "blue";
+            document.querySelector("#member_3").style.backgroundColor = "blue";
+        }
+
+        if(A>B && A>C){
+            document.querySelector("#member_1").style.backgroundColor = "green";
+        }
+        else if(B>C && B>C){
+            document.querySelector("#member_2").style.backgroundColor = "green";
+        }
+        else if(C >A && C >B){
+            document.querySelector("#member_3").style.backgroundColor = "green";
+        }
+
+        
+
+        if(B > A && C > A){
+             document.querySelector("#member_1").style.backgroundColor = "red";
+        }
+        else if(A > B && C > B){
+             document.querySelector("#member_2").style.backgroundColor = "red";
+        }
+        else if(A > C && B > C){
+             document.querySelector("#member_3").style.backgroundColor = "red";
+        }
+
+        if(A != max_value && A != min_value){
+            document.querySelector("#member_1").style.backgroundColor = "yellow";
+        }
+        else if (B != max_value && B != min_value) {
+            document.querySelector("#member_2").style.backgroundColor = "yellow";
+        }
+        else if(C != max_value && C != min_value){
+          document.querySelector("#member_3").style.backgroundColor = "yellow";
+        }
+
+
+
+
+
+
+
+    
+
+    }
+
+   
+</script>
+</html>
